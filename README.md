@@ -10,13 +10,16 @@ The official repository for <MMP++: Motion Manifold Primitives with Parametric C
 
 ### __0. Preparation__
 
-* Edit the [environment.yml](environment.yml) file with the proper PyTorch version (depedning on your CUDA Version), and run the following command:
+* Run the following commands:
+
   ```
   conda create python=3.8 -n MMPpp
   conda activate MMPpp
+
+  # Before installing the required python packages in requirements.txt, first install a proper version of PyTorch (depedning on your CUDA version). You do not need torchvision nor torchaudio.
+   
   pip install -r requirements.txt --progress-bar on
   ```
-
 * Download the pretrained models from [GOOGLE DRIVE](https://drive.google.com/file/d/1qnsqojNl-OfDNPRSKWiNy_vlEHkgn7tQ/view?usp=sharing) and place the "results" directory in the root folder. If you have downloaded the models, you can skip running [train.py](train.py).
 
 ### __1. 2D Toy Experiments__
@@ -66,9 +69,7 @@ The official repository for <MMP++: Motion Manifold Primitives with Parametric C
   ```
   python train.py --base_config configs/SE3/mmppp/base_config.yml --config configs/SE3/mmppp/mmppp.yml --model.z_dim 2 --run mmppp_zdim2 --device 0
   ```
-
 * Trained models are saved to [results/SE3/se3mmppp](results/SE3/se3mmppp).
-
 * To see the modulation of the latent values and viapoints, run the following command:
 
   ```
@@ -76,7 +77,9 @@ The official repository for <MMP++: Motion Manifold Primitives with Parametric C
   ```
 
 ## Citation
+
 If you found this library useful in your research, please consider citing:
+
 ```
 @article{lee2024mmp++,
   title={MMP++: Motion Manifold Primitives With Parametric Curve Models},
@@ -86,4 +89,3 @@ If you found this library useful in your research, please consider citing:
   publisher={IEEE}
 }
 ```
-
