@@ -1,0 +1,205 @@
+<?xml version="1.1" ?> 
+<robot name="plane"> 
+
+  <link name="shelve_bottom">
+    <contact>
+        <lateral_friction value="1"/>
+    </contact>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value=".0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.01"/>
+      <geometry>
+        <box size="0.4 0.5 0.02"/>
+      </geometry>
+      <material name="table_gray"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.01"/>
+      <geometry>
+        <box size="0.4 0.5 0.02"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <link name="shelve_top">
+    <contact>
+        <lateral_friction value="1"/>
+    </contact>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value=".0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.0 0.0 1.1900000000000002"/>
+      <geometry>
+        <box size="0.4 0.5 0.02"/>
+      </geometry>
+      <material name="table_gray"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0.0 0.0 1.1900000000000002"/>
+      <geometry>
+        <box size="0.4 0.5 0.02"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <joint name="joint_bt" type="fixed">
+    <parent link="shelve_bottom"/>
+    <child link="shelve_top"/>
+    <origin rpy="0 0 0.0" xyz="0 0 0.0"/>
+  </joint>
+
+  <link name="shelve_back">
+    <contact>
+        <lateral_friction value="1"/>
+    </contact>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value=".0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="-0.19 0 0.6000000000000001"/>
+      <geometry>
+        <box size="0.02 0.5 1.1600000000000001"/>
+      </geometry>
+      <material name="table_gray"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="-0.19 0 0.6000000000000001"/>
+      <geometry>
+        <box size="0.02 0.5 1.1600000000000001"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <joint name="joint2_bb" type="fixed">
+    <parent link="shelve_bottom"/>
+    <child link="shelve_back"/>
+    <origin rpy="0 0 0.0" xyz="0 0 0.0"/>
+  </joint>
+
+  <link name="shelve_left">
+    <contact>
+        <lateral_friction value="1"/>
+    </contact>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value=".0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.01 -0.24 0.6000000000000001"/>
+      <geometry>
+        <box size="0.38 0.02 1.1600000000000001"/>
+      </geometry>
+      <material name="table_gray"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0.01 -0.24 0.6000000000000001"/>
+      <geometry>
+        <box size="0.38 0.02 1.1600000000000001"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <joint name="joint_bl" type="fixed">
+    <parent link="shelve_bottom"/>
+    <child link="shelve_left"/>
+    <origin rpy="0 0 0.0" xyz="0 0 0.0"/>
+  </joint>
+
+  <link name="shelve_right">
+    <contact>
+        <lateral_friction value="1"/>
+    </contact>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value=".0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.01 0.24 0.6000000000000001"/>
+      <geometry>
+        <box size="0.38 0.02 1.1600000000000001"/>
+      </geometry>
+      <material name="table_gray"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0.01 0.24 0.6000000000000001"/>
+      <geometry>
+        <box size="0.38 0.02 1.1600000000000001"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <joint name="joint_br" type="fixed">
+    <parent link="shelve_bottom"/>
+    <child link="shelve_right"/>
+    <origin rpy="0 0 0.0" xyz="0 0 0.0"/>
+  </joint>
+
+  <link name="shelve_horizontal_0">
+    <contact>
+        <lateral_friction value="1"/>
+    </contact>
+
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value=".0"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+
+    <visual>
+      <origin rpy="0 0 0" xyz="0.01 0 0.54"/>
+      <geometry>
+        <box size="0.38 0.46 0.02"/>
+      </geometry>
+      <material name="table_gray"/>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0.01 0 0.54"/>
+      <geometry>
+        <box size="0.38 0.46 0.02"/>
+      </geometry>
+    </collision>
+
+  </link>
+
+  <joint name="joint_hv0" type="fixed">
+    <parent link="shelve_bottom"/>
+    <child link="shelve_horizontal_0"/>
+    <origin rpy="0 0 0.0" xyz="0 0 0.0"/>
+  </joint>
+
+  <material name="table_gray">
+    <color rgba=".7686 .6431 .5176 1."/>
+  </material>
+</robot>

@@ -1,0 +1,26 @@
+torch==1.13.0+cu117 --extra-index-url https://download.pytorch.org/whl/cu117
+# Check https://pytorch.org/get-started/previous-versions/, 
+# the python version, and your CUDA version (here, python=3.8 and CUDA 11.7)
+scipy
+matplotlib
+scikit-learn
+argparse
+pyyaml
+omegaconf
+pybullet
+open3d
+wandb
+tensorboard
+tensorboardX
+tqdm
+h5py
+pandas
+ipykernel
+urdfpy
+## The below versions are needed for compatibility with urdfpy
+## Igore the below ERROR message
+## pip's dependency resolver does not currently take into account all the packages that are installed. 
+## This behaviour is the source of the following dependency conflicts.
+## urdfpy 0.0.22 requires networkx==2.2, but you have networkx 3.1 which is incompatible.
+numpy==1.23.5  
+networkx==3.1

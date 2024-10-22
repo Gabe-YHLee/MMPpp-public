@@ -1,0 +1,50 @@
+wandb_project_name: MMPpp
+logdir: 'results/robot-manifold'
+logger: 
+  type: base
+  endwith: ['@', '#']
+model:
+  encoder:
+    arch: fc_vec
+    l_hidden: [256, 256, 256, 256, ]
+    activation: ['elu', 'elu', 'elu', 'elu', ]
+    out_activation: 'linear'
+  decoder:
+    arch: fc_vec
+    l_hidden: [256, 256, 256, 256, ]
+    activation: ['elu', 'elu', 'elu', 'elu', ]
+    out_activation: 'linear'
+  x_dim: 140
+  z_dim: 2
+  dof: 7
+  b: 20
+  via_points: [
+    [-1.22937435, -0.3774999, 1.17831243, -1.4427563, 0.28473847, 2.87936954, 0.85840966], 
+    [-0.96280892, -0.2466983, -0.46373697, -2.23105282, 0.34272699, 3.62121556, 0.36830725]
+  ]
+data:
+  training:
+    dataset: Robot
+    root: datasets/robot-manifold
+    batch_size: 5
+    n_workers: 4
+    split: training
+    shuffle: True
+  validation:
+    dataset: Robot
+    root: datasets/robot-manifold
+    batch_size: 5
+    n_workers: 4
+    split: validation
+    shuffle: True
+trainer: base
+training:
+  n_epoch: 30000
+  optimizer:
+    name: 'adam'
+    lr: 0.0001
+  print_interval: 100
+  val_interval: 100
+  eval_interval: 100
+  besteval_key: mmd_
+  visualize_interval: null

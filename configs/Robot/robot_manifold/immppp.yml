@@ -1,0 +1,3 @@
+model:
+  arch: immppp
+  iso_reg: 10

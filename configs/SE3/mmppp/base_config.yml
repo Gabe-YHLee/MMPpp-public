@@ -1,0 +1,43 @@
+wandb_project_name: MMPpp
+logdir: 'results/SE3/se3mmppp'
+logger: 
+  type: base
+  endwith: ['@', '#']
+model:
+  encoder:
+    arch: fc_vec
+    l_hidden: [512, 512, ]
+    activation: ['elu', 'elu', ]
+    out_activation: 'linear'
+  decoder:
+    arch: fc_vec
+    l_hidden: [512, 512, ]
+    activation: ['elu', 'elu', ]
+    out_activation: 'linear'
+  b: 20
+  z_dim: 2
+data:
+  training:
+    dataset: Pouring
+    root: datasets/bigbottle_pkl_subdataset/pouring_data
+    batch_size: 4
+    n_workers: 4
+    split: training
+    shuffle: True
+  validation:
+    dataset: Pouring
+    root: datasets/bigbottle_pkl_subdataset/pouring_data
+    batch_size: 4
+    n_workers: 4
+    split: validation
+    shuffle: True
+trainer: base
+training:
+  n_epoch: 10000
+  optimizer:
+    name: 'adam'
+    lr: 0.0001
+  print_interval: 100
+  val_interval: 100
+  eval_interval: null
+  visualize_interval: null

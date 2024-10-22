@@ -1,0 +1,48 @@
+wandb_project_name: MMPpp
+logdir: 'results/toy/exp2'
+logger: 
+  type: base
+  endwith: ['@', '#']
+model:
+  encoder:
+    arch: fc_vec
+    l_hidden: [512, 512, ]
+    activation: ['elu', 'elu', ]
+    out_activation: 'linear'
+  decoder:
+    arch: fc_vec
+    l_hidden: [512, 512, ]
+    activation: ['elu', 'elu', ]
+    out_activation: 'linear'
+  x_dim: 40
+  z_dim: 2
+  dof: 2
+  b: 20
+  via_points: [[0.8, 0.8], [-0.8, -0.8]]
+data:
+  training:
+    dataset: Toy
+    root: datasets/EXP2
+    batch_size: 5
+    n_workers: 4
+    split: training
+    shuffle: True
+  validation:
+    dataset: Toy
+    root: datasets/EXP2
+    batch_size: 5
+    n_workers: 4
+    split: validation
+    shuffle: True
+trainer: base
+training:
+  n_epoch: 10000
+  optimizer:
+    name: 'adam'
+    lr: 0.0001
+  print_interval: 100
+  val_interval: 100
+  eval_interval: 100
+  eval_n_components: 3
+  besteval_key: mmd_
+  visualize_interval: null

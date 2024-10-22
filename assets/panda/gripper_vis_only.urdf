@@ -1,0 +1,51 @@
+<?xml version="0.0" ?>
+<robot name="vis_gripper">
+  <link name="vis_panda_hand">
+    <visual>
+      <geometry>
+        <mesh filename="package://visual/hand.obj"/>
+      </geometry>
+      <material name="panda_gray"/>
+    </visual>
+  </link>
+  
+  <link name="vis_panda_leftfinger">
+    <visual>
+      <geometry>
+        <mesh filename="package://visual/finger.obj"/>
+      </geometry>
+      <material name="panda_gray"/>
+    </visual>
+  </link>
+  
+  <link name="vis_panda_rightfinger">
+    <visual>
+      <origin rpy="0 0 3.14159265359" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://visual/finger.obj"/>
+      </geometry>
+      <material name="panda_gray"/>
+    </visual>
+  </link>
+
+  <joint name="panda_finger_joint1" type="prismatic">
+    <parent link="vis_panda_hand"/>
+    <child link="vis_panda_leftfinger"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0584"/>
+    <axis xyz="0 1 0"/>
+    <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
+  </joint>
+  
+  <joint name="panda_finger_joint2" type="prismatic">
+    <parent link="vis_panda_hand"/>
+    <child link="vis_panda_rightfinger"/>
+    <origin rpy="0 0 0" xyz="0 0 0.0584"/>
+    <axis xyz="0 -1 0"/>
+    <limit effort="20" lower="0.0" upper="0.04" velocity="0.2"/>
+    <mimic joint="panda_finger_joint1"/>
+  </joint>
+
+  <material name="gripper_color">
+    <color rgba=".8 .8 .8 1."/>
+  </material>
+</robot>
